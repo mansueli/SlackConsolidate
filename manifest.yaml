@@ -1,0 +1,30 @@
+display_information:
+name: SlackConsolidate
+features:
+bot_user:
+display_name: SlackConsolidate
+always_online: false
+oauth_config:
+scopes:
+user:
+- channels:history
+- channels:read
+- channels:write
+- chat:write
+- links:read
+- users:read
+- groups:history
+- groups:read
+- mpim:history
+- im:history
+bot:
+- channels:history
+- channels:read
+- links:read
+- chat:write.public
+- chat:write
+- channels:join
+settings:
+org_deploy_enabled: false
+socket_mode_enabled: false
+token_rotation_enabled: false
