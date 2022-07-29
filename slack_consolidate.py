@@ -22,6 +22,7 @@ SLACK_ORG_LINK = f"https://{SLACK_ORG}.slack.com/archives/"
 POOLING_DELAY = 1.4  
 # Check if new channels were added each hour.
 SCAN_CHANNELS_DELAY = 3600.0
+BUFFER_SIZE = 20
 
 class SlackChannel:
   def __init__(self, id, name, p_level, dest_channel_id, dest_channel, private):
@@ -111,7 +112,7 @@ def loop_through_channels(channels):
         channel = channels[channel_id]
         conversation_history = []
         try:
-            result = client.conversations_history(channel=channel.id, limit = 20)
+            result = client.conversations_history(channel=channel.id, limit = BUFFER_SIZE)
             conversation_history = result["messages"]
             logger.info("{} messages found in {}".format(len(conversation_history), id))
         except SlackApiError as e:
