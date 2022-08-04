@@ -3,9 +3,12 @@ import logging
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
 from supabase import create_client, Client
-logger = logging.getLogger(__name__)
 from datetime import datetime
 from dotenv import dotenv_values
+############
+# Setting env: 
+############
+logger = logging.getLogger(__name__)
 config = dotenv_values(".env")
 bot_client = WebClient(token=config['SLACK_BOT_TOKEN'])
 client = WebClient(token=config['SLACK_TOKEN'])
@@ -52,7 +55,7 @@ def setup():
         dict: Dictionary with SlackChannel objects. 
     """
     channels = dict()
-    data = supabase.table("slack_channels").select("channel_id, channel, p_level, dest_channel, dest_channel_id, private").execute().data
+    data = supabase.from_("slack_channels").select("channel_id, channel, p_level, dest_channel, dest_channel_id, private").execute().data
     data_dic = data
     for row in data_dic:
         channels[row['channel_id']] = SlackChannel(id = row['channel_id'],
