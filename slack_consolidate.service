@@ -1,0 +1,8 @@
+[Unit]
+Description=Slack Consolidate
+
+[Service]
+ExecStart=/usr/bin/slack_consolidate.py
+
+[Install]
+WantedBy=multi-user.target
