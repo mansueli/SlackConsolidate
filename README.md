@@ -15,7 +15,8 @@ Edit the [slack_consolidate.service](https://github.com/mansueli/SlackConsolidat
 >: Default path is `/usr/bin/slack_consolidate.py`
 
 ### Creating the service:
-Now you have to add this service to this path `/etc/systemd/system/`
+Now you have to add this service file to the path `/etc/systemd/system/`.
+
 Make sure the `slack_consolidate.py` is executable:
 
 `sudo chmod +x /usr/bin/slack_consolidate.py`
